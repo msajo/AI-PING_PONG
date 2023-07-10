@@ -1,4 +1,39 @@
-body
-{
+b.heading{
+    
+    text-align: left;
+    width: 100%;
+}
+.heading h3 {
+    display: inline;
+    width: 100%;
+}
+.heading button {
+    float: right;
+    border: 1px solid white;
+}
+.big_image {
+    width: 100%;
+}
+#start , #status {
+    font-size: 22px;
+}
+.restart{
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h4{
+    background-color: azure;
+    line-height: 2;
+    margin: 0px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 
+}
+.modal-dialog{
+    width: 90%;
+}
+.instruction-image{
+    display: inline-block;
+    width: 45%;
 }
