@@ -24,7 +24,10 @@ var ball = {
     dx:3,
     dy:3
 }
-
+function preload(){
+  ball_touch = loadSound("ball_touch_paddel.wav");
+  missed = loadSound("missed.wav");
+}
 function setup(){
   canvas =  createCanvas(700,600);
   canvas.parent("canvas");
@@ -74,8 +77,8 @@ function draw(){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
-   rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
+   paddle1Y = rightWristY; 
+   rect(paddle1X,rightWristY,paddle1,paddle1Height,100);
    
    
     //pc computer paddle
@@ -95,7 +98,11 @@ function draw(){
    //function move call which in very important
     move();
 }
-
+function restart(){
+  loop()
+    pcscore = 0;
+  playerscore = 0;
+}
 
 
 //function reset when ball does notcame in the contact of padde
@@ -144,14 +151,16 @@ function move(){
        ball.dx=-ball.dx-0.5;       
    }
   if (ball.x-2.5*ball.r/2< 0){
-  if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
+  if (ball.y >= rightWristY&& ball.y <= rightWristY + paddle1Height) {
     ball.dx = -ball.dx+0.5;
     playerscore++;
+    ball_touch.play();
   }
   else{
     pcscore++;
     reset();
     navigator.vibrate(100);
+    missed.play();
   }
 }
 if(pcscore ==4){
@@ -162,7 +171,7 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text(" Press the Restart button to play again",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
